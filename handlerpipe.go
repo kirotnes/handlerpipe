@@ -54,13 +54,13 @@ func (hc *handleChain) UnwrapHandlerFunc() http.HandlerFunc {
 
 		var customResponseWriter = &responseWriterWrapper{w, false}
 
-		defer func() {
+		/*	defer func() {
 
 			if err := recover(); err != nil {
 				w.WriteHeader(500)
 				w.Write([]byte("Internal server error"))
 			}
-		}()
+		}()*/
 
 		for _, handler := range hc.funcs {
 			handler(customResponseWriter, req)
